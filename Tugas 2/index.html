@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tugas 2</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container-1">
+      <div class="content-1">
+        <h1>Hitung Nilai Rata-Rata</h1>
+        <br />
+        <form id="gradeForm">
+          <!-- input 1 -->
+          <div class="floating-label">
+            <!-- input nama  -->
+            <input
+              type="text"
+              id="nama"
+              placeholder="Nama"
+              class="floating-label-input"
+            />
+
+            <!-- label nama -->
+            <label for="nama" class="floating-label-label">Nama</label>
+          </div>
+          <br />
+          <!-- input 2 -->
+          <div class="floating-label">
+            <!-- input matkul  -->
+            <input
+              type="text"
+              id="matkul"
+              placeholder="Mata Kuliah"
+              class="floating-label-input"
+            />
+
+            <!-- label matkul -->
+            <label for="matkul" class="floating-label-label">Mata Kuliah</label>
+          </div>
+          <br />
+          <!-- input 3 -->
+          <div class="custom-select">
+            <div class="title-grade">
+              <label for="grade">Grade :</label>
+            </div>
+            <select id="grade">
+              <option value="">Select Grade :</option>
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+              <option value="D">D</option>
+              <option value="E">E</option>
+            </select>
+          </div>
+          <br />
+          <br />
+          <!-- hitung  -->
+          <button onclick="calculateAverage()" type="button" class="btn-hitung">
+            HITUNG
+          </button>
+        </form>
+
+        <table id="resultTable" style="display: none">
+          <thead>
+            <tr>
+              <th>Nama</th>
+              <th>Mata Kuliah</th>
+              <th>Grade</th>
+              <th>Nilai Rata-rata</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- List data akan mengisi disini -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.js"
+      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      $(document).ready(function () {
+        $("#gradeForm").submit(function (event) {
+          var arrayList = null;
+
+          if (arrayList == undefined) {
+            console.log("UNDIFINED");
+          } else {
+            console.log("Ini variable arrayList[7] : ", arrayList[7]);
+          }
+        });
+      });
+    </script>
+
+    <script>
+      const dataResults = [];
+
+      function calculateAverage() {
+        const gradeValues = { A: 4, B: 3, C: 2, D: 1, E: 0 };
+        const name = document.getElementById("nama").value;
+        const course = document.getElementById("matkul").value;
+        const selectedGrade = document.getElementById("grade").value;
+
+        if (selectedGrade in gradeValues) {
+          const gradeValue = gradeValues[selectedGrade];
+          const average = gradeValue / 1;
+
+          const newData = {
+            nama: name,
+            mataKuliah: course,
+            grade: selectedGrade,
+            nilaiRataRata: average.toFixed(2),
+          };
+
+          dataResults.push(newData);
+          updateResultTable();
+        }
+      }
+
+      function updateResultTable() {
+        const resultTable = document.getElementById("resultTable");
+        const resultTableBody = resultTable.querySelector("tbody");
+
+        resultTableBody.innerHTML = ""; // menghapus baris data yang ada
+
+        dataResults.forEach((data) => {
+          const newRow = document.createElement("tr");
+          newRow.innerHTML = `
+      <td>${data.nama}</td>
+      <td>${data.mataKuliah}</td>
+      <td>${data.grade}</td>
+      <td>${data.nilaiRataRata}</td>
+    `;
+          resultTableBody.appendChild(newRow);
+        });
+
+        resultTable.style.display = "block";
+      }
+    </script>
+  </body>
+</html>

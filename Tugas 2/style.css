@@ -1,0 +1,155 @@
+*,
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: ghostwhite;
+}
+
+:root {
+  font-size: 20px;
+}
+
+.container-1 {
+  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.content-1 {
+  height: 100;
+  width: 100;
+}
+
+/* isi kontainer */
+
+.floating-label {
+  border: 2px solid #d1d5db;
+  border-radius: 0.1rem;
+  position: relative;
+}
+
+.floating-label-input {
+  border: none;
+  padding: 0.5rem;
+  height: 100%;
+  width: 100%;
+
+  font-size: 15px;
+}
+
+/*
+Show the label at desired position when the
+placeholder of input isn't shown
+*/
+
+.floating-label-input:not(:placeholder-shown) + .floating-label-label {
+  background: ghostwhite;
+  transform: translate(0, -200%);
+  opacity: 1;
+}
+
+.floating-label-label {
+  /* Position the label */
+  left: 1.8rem;
+  font-size: 20px;
+  position: absolute;
+  top: 100%;
+
+  /* Hide it by default */
+  opacity: 0;
+  transition: all 200ms;
+
+  padding: 1.9px;
+}
+
+/* pengaturan dropdown menu */
+/* Gaya untuk kotak seleksi kustom */
+.title-grade {
+  margin-bottom: 4px;
+}
+
+.custom-select {
+  position: relative;
+  display: inline-block;
+  width: 100%; /* Sesuaikan lebar sesuai kebutuhan */
+}
+
+/* Gaya untuk elemen <select> */
+.custom-select select {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #d1d5db;
+  border-radius: 4px;
+  appearance: none; /* Menghilangkan gaya default browser */
+  cursor: pointer;
+}
+
+/* Gaya untuk opsi-opsi di dalam <select> */
+.custom-select option {
+  padding: 10px;
+}
+
+/* Gaya ketika pilihan dihover */
+.custom-select select:hover {
+  border-color: dodgerblue;
+}
+
+/* Gaya ketika elemen <select> mendapatkan fokus */
+.custom-select select:focus {
+  outline: none;
+  border-color: #555;
+  box-shadow: 0 0 5px rgba(85, 85, 85, 0.5);
+}
+
+/* tombol hitung */
+.btn-hitung {
+  background-color: #4caf50;
+  /*Green*/
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: 0.3s;
+}
+
+.btn-hitung:hover {
+  opacity: 1;
+}
+
+/* tampilan untuk result tabel  */
+/* Gaya untuk tabel hasil */
+#resultTable {
+  margin-top: 20px;
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+/* Gaya untuk header tabel */
+#resultTable th {
+  background-color: #f2f2f2;
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+/* Gaya untuk baris tabel */
+#resultTable td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+/* Gaya untuk baris ganjil */
+#resultTable tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
